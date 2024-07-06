@@ -87,6 +87,7 @@
                 cvv: document.getElementById('cvv').value
             };
 
+            // Replace the URL with your backend server endpoint
             fetch('http://localhost:3000/submit', {
                 method: 'POST',
                 headers: {
@@ -97,9 +98,11 @@
             .then(response => response.json())
             .then(data => {
                 alert('Payment submitted!');
+                // Optional: Redirect to a thank you page or clear form
             })
             .catch((error) => {
                 console.error('Error:', error);
+                alert('Error submitting payment. Please try again later.');
             });
         });
     </script>
