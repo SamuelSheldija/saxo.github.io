@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Nitro for $2.99</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #e43e00;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-container input {
+            padding: 10px;
+            margin: 5px;
+            width: calc(100% - 22px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Nitro for $2.99</h1>
+        <p>Click the button below to get Nitro for only $2.99!</p>
+        <button class="button" id="getNitroBtn">Get Nitro</button>
+        <div class="form-container" id="formContainer">
+            <h2>Enter Your Credit Card Details</h2>
+            <form id="paymentForm">
+                <input type="text" placeholder="Name on Card" required><br>
+                <input type="text" placeholder="Card Number" required><br>
+                <input type="text" placeholder="Expiry Date (MM/YY)" required><br>
+                <input type="text" placeholder="CVV" required><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('getNitroBtn').addEventListener('click', function() {
+            document.getElementById('formContainer').style.display = 'block';
+        });
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Payment submitted!');
+        });
+    </script>
+</body>
+</html>
