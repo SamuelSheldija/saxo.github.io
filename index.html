@@ -3,27 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Albanian Greeting</title>
+    <title>Simple Albanian Interaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"], select {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #00c6ff;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0059b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Albanian Interaction</h1>
+        <div id="step1">
+            <label for="name">Si e ke emrin?</label>
+            <input type="text" id="name" name="name">
+            <button onclick="askHowAreYou()">Submit</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <label id="question2" for="response"></label>
+            <input type="text" id="response" name="response">
+            <button onclick="askYesNo()">Submit</button>
+        </div>
+
+        <div id="step3" class="hidden">
+            <label id="question3" for="yesNoResponse">Ah a ke pas qef?</label>
+            <select id="yesNoResponse" name="yesNoResponse">
+                <option value="po">Po</option>
+                <option value="jo">Jo</option>
+            </select>
+            <button onclick="showFinalMessage()">Submit</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <p id="finalMessage"></p>
+            <p id="finalRequest" class="hidden">He ma bab on jam Samueli a e she qa bana teshna a pa ma blen pc</p>
+        </div>
+    </div>
+
     <script>
-        function askName() {
-            const name = prompt("Si e ke emrin?");
+        function askHowAreYou() {
+            const name = document.getElementById('name').value;
             if (name) {
-                askHowAreYou(name);
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('question2').textContent = `Ko je ken sat, ${name}?`;
+                document.getElementById('step2').classList.remove('hidden');
             }
         }
 
-        function askHowAreYou(name) {
-            const response = prompt(`Ko je ken sat, ${name}?`);
+        function askYesNo() {
+            const response = document.getElementById('response').value;
             if (response) {
-                showResult(response);
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3').classList.remove('hidden');
             }
         }
 
-        function showResult(response) {
-            alert(`Ah a ke pas qef ${response}`);
+        function showFinalMessage() {
+            const yesNoResponse = document.getElementById('yesNoResponse').value;
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('finalMessage').textContent = `Ah a ke pas qef ${yesNoResponse}`;
+            document.getElementById('step4').classList.remove('hidden');
+            document.getElementById('finalRequest').classList.remove('hidden');
         }
     </script>
-</head>
-<body onload="askName()">
 </body>
 </html>
+
