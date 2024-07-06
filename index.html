@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Albanian Greeting</title>
+    <script>
+        function askName() {
+            const name = prompt("Si e ke emrin?");
+            if (name) {
+                askHowAreYou(name);
+            }
+        }
+
+        function askHowAreYou(name) {
+            const response = prompt(`Ko je ken sat, ${name}?`);
+            if (response) {
+                showResult(response);
+            }
+        }
+
+        function showResult(response) {
+            alert(`Ah a ke pas qef ${response}`);
+        }
+    </script>
+</head>
+<body onload="askName()">
+</body>
+</html>
